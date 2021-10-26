@@ -8,9 +8,10 @@ resource "aws_instance" "pub-instance-sub1" {
   associate_public_ip_address = true
   subnet_id                   = aws_subnet.terra-pub-sub1.id
   security_groups        = [aws_security_group.terra-web-sg.id]
+  count = 3
 
   tags = {
-    Name = "publicinstance"
+    Name = "publicinstance-${count.index}"
   }
 }
   # creating an EC2 instance in the private subnet
@@ -22,9 +23,9 @@ resource "aws_instance" "priv-instance-sub1" {
   key_name            = var.instance_key_pair
   subnet_id           = aws_subnet.terra-priv-sub1.id
   security_groups = [aws_security_group.terra-web-sg.id]
-
+  count = 3
   tags = {
-    Name = "privateinstance"
+    Name = "privateinstance-${count.index}"
   }
 
 }   

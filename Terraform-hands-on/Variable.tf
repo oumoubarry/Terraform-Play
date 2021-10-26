@@ -40,7 +40,6 @@ variable "instance_key_pair" {
   type        = string
   default     = "Ansible-Ohio-KP" 
 }
-
 variable "instance_type_map" {
   description = "lists of possible instance types"
   type = map(string)
